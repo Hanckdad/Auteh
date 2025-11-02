@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Pairing Code Sender</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <div class="whatsapp-icon">🔐</div>
+                <h1>WhatsApp Pairing</h1>
+            </div>
+            <p>Kirim kode pairing langsung ke nomor WhatsApp</p>
+            <div class="subtitle">Tanpa perlu login manual</div>
+        </div>
+        
+        <div class="info-box">
+            <p><strong>📋 Cara Penggunaan:</strong></p>
+            <p>• Masukkan nomor WhatsApp tujuan (format: 6281234567890)</p>
+            <p>• Tentukan jumlah pengiriman (1-5 kali)</p>
+            <p>• Sistem akan otomatis mengirim pairing code</p>
+            <p>• Kode pairing akan dikirim via WhatsApp</p>
+        </div>
+        
+        <form id="pairingForm">
+            <div class="form-group">
+                <label for="phoneNumber">📱 Nomor WhatsApp:</label>
+                <input type="text" id="phoneNumber" placeholder="Contoh: 6281234567890" required>
+                <small>Format: kode negara + nomor (tanpa + dan spasi)</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="count">🔄 Jumlah Pengiriman:</label>
+                <div class="counter-container">
+                    <button type="button" class="counter-btn" id="decreaseCount">-</button>
+                    <input type="number" id="count" min="1" max="5" value="1" required readonly>
+                    <button type="button" class="counter-btn" id="increaseCount">+</button>
+                </div>
+                <small>Maksimal 5 kali pengiriman</small>
+            </div>
+            
+            <button type="submit" id="submitBtn">
+                <span class="button-text">🚀 Kirim Pairing Code</span>
+                <div class="button-loader" style="display: none;">
+                    <div class="spinner"></div>
+                    <span>Memproses...</span>
+                </div>
+            </button>
+        </form>
+        
+        <div class="progress-container" id="progressContainer" style="display: none;">
+            <div class="progress-info">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-text" id="progressText">Mempersiapkan sistem...</div>
+            </div>
+            <div class="status-message" id="statusMessage">
+                Membuat koneksi WhatsApp...
+            </div>
+        </div>
+        
+        <div class="result" id="result"></div>
+        
+        <div class="session-info" id="sessionInfo" style="display: none;">
+            <h4>📊 Status Session</h4>
+            <div id="sessionDetails"></div>
+        </div>
+        
+        <div class="footer">
+            <p>⚡ Direct WhatsApp Pairing System</p>
+            <p class="version">v1.0.0 | Auto-cleanup session aktif</p>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
